@@ -98,6 +98,15 @@
           </div>
         </div>
       </div>
+      <div class="row waw fadeIn">
+        <div class="col-md-9 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
   <!-- SCRIPTS -->
@@ -109,6 +118,28 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labeles: ['Red','Green','Blue','Yellow','Grey','LightRed']
+          data: [12,14,54,3,45,5],
+          backgroundColor: [
+            'red',
+            'green',
+            'blue',
+            'yellow',
+            'grey',
+            'red'
+          ]
+        }]
+      }
+    })
+  </script>
 </body>
 
 </html>
