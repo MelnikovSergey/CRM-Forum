@@ -60,7 +60,7 @@
 
     <div class="sidebar-fixed position-fixed">
       <a href="#" class="logo-wrapper wawes-effect">
-        <img src="" alt="CRM Logo" class="img-fluid">
+        <img src="pictures/logo_2.jpg" alt="CRM Logo" class="img-fluid">
       </a>
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item active waves-effect">
@@ -107,6 +107,143 @@
           </div>
         </div>
       </div>
+      <div class="row waw fadeIn">
+        <div class="col-md-3 mb-4">
+          <div class="card mb-2">
+            <div class="card-body">
+              <canvas id="pieChart"></canvas>
+            </div>
+          </div>
+          <div class="card mt-4 mb-4">
+            <div class="card-body">
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action wawes-effect">
+                  Sales
+                  <span class="badge badge-success badge-pill pull-right">25%</span>
+                  <i class="fa fa-arrow-up m1-1"></i>
+                </a>
+              </div>
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action wawes-effect">
+                  Sales
+                  <span class="badge badge-danger badge-pill pull-right">25%</span>
+                  <i class="fa fa-arrow-up m1-1"></i>
+                </a>
+              </div>
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action wawes-effect">
+                  Sales
+                  <span class="badge badge-primary badge-pill pull-right">25%</span>
+                  <i class="fa fa-arrow-up m1-1"></i>
+                </a>
+              </div>
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action wawes-effect">
+                  Sales
+                  <span class="badge badge-danger badge-pill pull-right">25%</span>
+                  <i class="fa fa-arrow-up m1-1"></i>
+                </a>
+              </div>                                                        
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row waw fadeIn"> 
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead class="blue-grey lighten-4">
+                  <tr>
+                    <th>#</th>
+                    <th>Lorem</th>
+                    <th>Ipsum</th>
+                    <th>Dolor</th>
+                  </tr>                  
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>                                                      
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th>#</th>
+                    <th>Lorem</th>
+                    <th>Ipsum</th>
+                    <th>Dolor</th>
+                  </tr>                  
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <th>Item 1</th>
+                    <th>Item 2</th>
+                    <th>Item 3</th>
+                  </tr>                                                      
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>                  
+      </div>
+      <div class="row wow fadeIn">
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card">
+            <div class="card-header">Line chart</div>
+              <div class="card-body">
+                <canvas id="lineChart"></canvas>
+              </div>
+          </div>
+        </div>
+      </div>      
     </main>
 
   <!-- SCRIPTS -->
@@ -126,8 +263,10 @@
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labeles: ['Red','Green','Blue','Yellow','Grey','LightRed']
-          data: [12,14,54,3,45,5],
+        labels: ['Red', 'Green', 'Blue', 'Yellow', 'Grey', 'LightRed'],
+        datasets: [{
+          label: '# 3 of Votes',
+          data: [12, 14, 15, 11, 45, 5],
           backgroundColor: [
             'red',
             'green',
@@ -135,10 +274,84 @@
             'yellow',
             'grey',
             'red'
-          ]
+          ],
+          borderColor: [
+            'green',
+            'grey',
+            'blue',
+            'red',
+            'yellow',
+            'red'
+          ],
+          borderWidth: 2
         }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
-    })
+    });
+
+    var ctxPie = document.getElementById('pieChart').getContext('2d');
+    var myPieChart = new Chart(ctxPie, {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: [350, 280, 320, 100, 42],
+          backgroundColor: [
+            'red',
+            'green',
+            'blue',
+            'yellow',
+            'grey'
+          ],
+          hoverBackgroundColor: [
+            'green',
+            'grey',
+            'blue',
+            'red',
+            'yellow'
+          ],
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+    var ctxLineChart = document.getElementById('lineChart').getContext('2d');
+    var myLineChart = new Chart(ctxLineChart, {
+      type: 'line',
+      data: {
+        labels: ["metrix-1","metrix-2","metrix-3","metrix-4","metrix-5","metrix-6"],
+        datasets: [
+          {
+            label: "dataset-1",
+            fillColor: "black",
+            strokeColor: "red",
+            pointColor: "green",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "yellow",
+            data: [54,24,6,36,67,34,2]            
+          },
+          {
+            label: "dataset-2",
+            fillColor: "black",
+            strokeColor: "red",
+            pointColor: "green",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "yellow",
+            data: [14,54,51,4,61,54,15]            
+          }          
+        ]
+      }
+    })    
   </script>
 </body>
 
