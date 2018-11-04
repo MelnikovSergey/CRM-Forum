@@ -238,9 +238,25 @@
         <div class="col-lg-4 col-md-12 mb-4">
           <div class="card">
             <div class="card-header">Line chart</div>
-              <div class="card-body">
-                <canvas id="lineChart"></canvas>
-              </div>
+            <div class="card-body">
+              <canvas id="lineChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-header">Radar-chart</div>
+            <div class="card-body">
+              <canvas id="radarChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-header">Doughnut-chart</div>
+            <div class="card-body">
+              <canvas id="doughnutChart"></canvas>
+            </div>
           </div>
         </div>
       </div>      
@@ -351,7 +367,50 @@
           }          
         ]
       }
-    })    
+    });
+    var ctxR = document.getElementById('radarChart').getContext('2d');
+    var myRadarChart = new Chart(ctxR, {
+      type: 'radar',
+      data: {
+        labels: ["First","second","Third","Fourth","Fifth"],
+        datasets: [{
+            label: "dataset-1",
+            fillColor: "black",
+            strokeColor: "red",
+            pointColor: "green",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "yellow",
+            data: [54,24,6,36,67,34,2]            
+          },
+          {
+            label: "dataset-2",
+            fillColor: "black",
+            strokeColor: "red",
+            pointColor: "green",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "yellow",
+            data: [14,54,51,4,61,54,15]            
+          } 
+        ]
+      }
+    });
+    var ctxD = document.getElementById('doughnutChart').getContext('2d');
+    var mydoughnutChart = new Chart(ctxD, {
+      type: 'doughnut',
+      data: {
+        labels: ["First","second","Third","Fourth","Fifth"],
+        datasets: [{
+          data: [300,50,100,34,120],
+          backgroundColor: ["red","green","blue","yellow","black"],
+          hoverBackgroundColor:  ["green","red","orange","yellow","blue"]
+        }]        
+      },
+      options: { 
+        responsive: true
+      } 
+    });    
   </script>
 </body>
 
