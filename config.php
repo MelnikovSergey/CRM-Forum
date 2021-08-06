@@ -2,8 +2,8 @@
 
 # Конфигурация
 $servername = 'localhost';
-$username = 'crm_user';
-$password = 'crm_pass';
+$username = 'root';
+$password = 'password';
 $dbname = 'crm_db';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
