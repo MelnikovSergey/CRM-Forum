@@ -5,18 +5,8 @@ class App {
 		this._tableId = tableId;
 
 		this._store.subscribe(this._changeData.bind(this));
-		
-		// this._initData(data);
 		this._store.notifyListeners();
 	}
-
-	/*
-	_initData(data) {
-		data.forEach((record) => {
-			this._store.addRecord(record);
-		});
-	}
-	*/
 
 	run() {
 		this._store.addRecord({
@@ -38,9 +28,6 @@ class App {
 			const row = this._renderRowData(rowData);
 			parentTable.appendChild(row);
 		});
-
-		// debugger;
-
 	}
 
 	_renderRowData(rowData) {
