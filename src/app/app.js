@@ -6,6 +6,7 @@ class App {
 
 		this._store.subscribe(this._changeData.bind(this));
 		this._store.notifyListeners();
+		this._bindEventListeners();
 	}
 
 	run() {
@@ -18,16 +19,22 @@ class App {
 		console.log('Ok');
 	}
 
+	_getTable() {
+		return document.getElementById(this._tableId);
+	}
+
 	_changeData = () => {
 		const newData = this._store.getRecords();
-		const parentTable = document.getElementById(this._tableId);
+		const parentTable = this._getTable();
 
 		parentTable.innerHTML = '';	
 	
 		newData.forEach(rowData => {
 			const row = this._renderRowData(rowData);
+			row.setAttribute('id', rowData.__innerId);
 			parentTable.appendChild(row);
 		});
+
 	}
 
 	_renderRowData(rowData) {
@@ -47,5 +54,34 @@ class App {
 
 		return td;
 
+	}
+
+	_handleClick(event) {
+
+		if(event.ctrlKey) {
+			return;
+		}
+
+		const targetRow = event.target.parentElement;
+		const recordId = targetRow.getAttribute('id');
+		const rowData = this._store.getRecordById(recordId);
+		debugger;
+	}
+
+	_handleDbClick(event) {
+
+		if(event.ctrlKey) {
+			const parentTable = this._getTable();
+			parentTable.removeChild(event.target.parentElement);
+		}
+
+	}
+
+	_bindEventListeners(event) {
+		const parentTable = this._getTable();
+
+		parentTable.addEventListener('dblclick', this._handleDbClick.bind(this));
+
+		parentTable.addEventListener('dblclick', this._handleClick.bind(this));
 	}
 }

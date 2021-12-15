@@ -20,11 +20,15 @@ class Store {
 		this.notifyListeners();
 	}
 
+	getRecordById(recordId) {
+		return { ...this._state[recordId], __innerId:  recordId};
+	}
+
 	getRecords() {
 		const fields = Object.keys(this._state);
 
 		return fields.map(fieldId => {
-			return { ...this._state[fieldId] };
+			return this.getRecordById(fieldId);
 		});
 	}
 
