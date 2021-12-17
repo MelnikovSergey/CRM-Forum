@@ -1,10 +1,12 @@
 class App {
 
-	constructor(data, tableId) {
-		this._store = new Store(data);
+	constructor(data, tableId, formName) {
 		this._tableId = tableId;
+		this._formName = formName;
 
+		this._store = new Store(data);
 		this._store.subscribe(this._changeData.bind(this));
+		
 		this._store.notifyListeners();
 		this._bindEventListeners();
 	}
@@ -74,6 +76,16 @@ class App {
 			const parentTable = this._getTable();
 			parentTable.removeChild(event.target.parentElement);
 		}
+
+	}
+
+	_populateToForm(rowData) {
+		const form = document.forms[this._formName];
+		const fields = Object.keys(rowData);
+		
+		fields.forEach((itemName) => {
+
+		});
 
 	}
 
