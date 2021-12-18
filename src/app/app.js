@@ -11,6 +11,7 @@ class App {
 		this._bindEventListeners();
 	}
 
+
 	run() {
 		this._store.addRecord({
 			first: 'Name',
@@ -67,7 +68,7 @@ class App {
 		const targetRow = event.target.parentElement;
 		const recordId = targetRow.getAttribute('id');
 		const rowData = this._store.getRecordById(recordId);
-		debugger;
+		this._populateToForm(rowData);
 	}
 
 	_handleDbClick(event) {
@@ -84,7 +85,9 @@ class App {
 		const fields = Object.keys(rowData);
 		
 		fields.forEach((itemName) => {
-
+			const el = form.elements[itemName];
+			if(!el) return
+			el.value = rowData[itemName];
 		});
 
 	}
@@ -93,7 +96,6 @@ class App {
 		const parentTable = this._getTable();
 
 		parentTable.addEventListener('dblclick', this._handleDbClick.bind(this));
-
 		parentTable.addEventListener('dblclick', this._handleClick.bind(this));
 	}
 }
